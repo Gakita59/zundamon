@@ -16,7 +16,9 @@ def get_elems():
 def join(arr1,arr2):
     new_arr = []
     for i, e in enumerate(arr1):
-        new_arr.append(e+arr2[i])
+        e = format(e)
+        arr2[i] = format(arr2[i])
+        new_arr.append([e,arr2[i]])
     return new_arr
 
 def get_text_list(elems):
@@ -33,7 +35,4 @@ def format(s):
     for i in range(3):
         s = s.replace('\n\n','\n')
     return s
-
-def task():
-    elems = get_elems()
     
