@@ -2,7 +2,7 @@ import discord
 from discord.ext import tasks
 import magical
 
-TOKEN = 'OTkxNjAwODE4MzI1Mjk1MTE0.GZJpYm.rc27gJgvVZS6cgiUnuQirahmvfRKbkDLoXi37M'
+TOKEN = 'OTkxNjAwODE4MzI1Mjk1MTE0.GxRv-c.664ghswHZ8JNvvWgCO9Jh4AKqMr36kvXG6Tlng'
 client = discord.Client()
 channel = None
 previous_elms = []
@@ -31,7 +31,7 @@ async def catch_new_ticket(elms):
         return True
 
 
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=5)
 async def task(embed):
     global previous_elms
 
@@ -63,7 +63,7 @@ async def on_message(message):
         await message.channel.send('ずんだもんなのだ')
     
     if message.content == '\start':
-        await message.channel.send('ここに送るのだ')
+        await message.channel.send('しんちゃくチケットがあったらここにおくるのだ')
         global channel
         channel = message.channel
         embed = await init_embed()
