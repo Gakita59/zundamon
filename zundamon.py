@@ -5,7 +5,7 @@ import magical
 TOKEN = 'OTkxNjAwODE4MzI1Mjk1MTE0.GxRv-c.664ghswHZ8JNvvWgCO9Jh4AKqMr36kvXG6Tlng'
 client = discord.Client()
 channel = None
-previous_elms = []
+previous_elms = [['a','a']]
 
 
 async def init_embed():
@@ -33,7 +33,6 @@ async def catch_new_ticket(elms):
 
 @tasks.loop(seconds=1)
 async def task(embed):
-    global previous_elms
 
     elms = magical.get_elems()
 
@@ -41,6 +40,7 @@ async def task(embed):
         print(elms[0])
         if await catch_new_ticket(elms):
             await send_embed(embed,elms[0])
+        global previous_elms
         previous_elms = elms
 
     except IndexError:
@@ -60,7 +60,10 @@ async def on_message(message):
         return
     
     if message.content == 'ずんだもん':
-        await message.channel.send('ずんだもんなのだ')
+        await message.channel.send('はいなのだ！')
+
+    if message.content == 'おはよう':
+        await message.channel.send(message.author.name + 'さん！おはようなのだ！')
     
     if message.content == '\start':
         await message.channel.send('しんちゃくチケットがあったらここにおくるのだ')
@@ -72,6 +75,11 @@ async def on_message(message):
     if message.content == '\stop':
         task.cancel()
         await message.channel.send('やめるのだ')
+
+    if message.content == '\prev':
+        await message.channel.send('previous_elmsの値は')
+        await message.channel.send(previous_elms)
+        await message.channel.send('なのだ')
 
 
 client.run(TOKEN)
