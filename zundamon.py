@@ -31,7 +31,7 @@ async def catch_new_ticket(elms):
         return True
 
 
-@tasks.loop(seconds=5)
+@tasks.loop(seconds=1)
 async def task(embed):
     global previous_elms
 
