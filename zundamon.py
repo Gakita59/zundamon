@@ -2,7 +2,7 @@ import discord
 from discord.ext import tasks
 import magical
 
-TOKEN = ''
+TOKEN = 'OTkxNjAwODE4MzI1Mjk1MTE0.GsAN-7.gieyVasoMQSaHLTdy3EFwtsvrujcVWA1srh0RM'
 client = discord.Client()
 channel = None
 previous_elms = [['a','a']]
@@ -40,7 +40,7 @@ async def task(embed):
         print(elms[0])
         if await catch_new_ticket(elms):
             await send_embed(embed,elms[0])
-            print(elms[0][0])
+            print('embed sended!!')
             if '札幌' in elms[0][0]:
                 await send_message('@everyone さっぽろのチケットなのだ！はやくとるのだ！！')
         global previous_elms
