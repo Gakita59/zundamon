@@ -2,7 +2,7 @@ import discord
 from discord.ext import tasks
 import magical
 
-TOKEN = 'OTkxNjAwODE4MzI1Mjk1MTE0.GxRv-c.664ghswHZ8JNvvWgCO9Jh4AKqMr36kvXG6Tlng'
+TOKEN = ''
 client = discord.Client()
 channel = None
 previous_elms = [['a','a']]
@@ -40,6 +40,9 @@ async def task(embed):
         print(elms[0])
         if await catch_new_ticket(elms):
             await send_embed(embed,elms[0])
+            print(elms[0][0])
+            if '札幌' in elms[0][0]:
+                await send_message('@everyone さっぽろのチケットなのだ！はやくとるのだ！！')
         global previous_elms
         previous_elms = elms
 
@@ -63,7 +66,7 @@ async def on_message(message):
         await message.channel.send('はいなのだ！')
 
     if message.content == 'おはよう':
-        await message.channel.send(message.author.name + 'さん！おはようなのだ！')
+        await message.channel.send(message.author.display_name + 'さん！おはようなのだ！')
     
     if message.content == '\start':
         await message.channel.send('しんちゃくチケットがあったらここにおくるのだ')
