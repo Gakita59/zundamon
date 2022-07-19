@@ -9,33 +9,33 @@ previous_elms = [['a','a']]
 
 async def make_title(elm):
     title = ''
-    if elm[0] in '大阪':
+    if '大阪' in elm[0]:
         title += '大阪 '
-    elif elm[0] in '幕張':
+    elif '幕張' in elm[0]:
         title += '幕張 '
     else:
         title += '札幌 '
     
-    if elm[0] in '金':
+    if '金' in elm[0]:
         title += '金'
-    elif elm[0] in '土':
+    elif '土' in elm[0]:
         title += '土'
     else:
         title += '日'
     
-    if elm[0] in '13' or elm[0] in '12':
+    if '13' in elm[0] or '12' in elm[0]:
         title += '昼 '
     else:
         title += '夜 '
 
-    if elm[1] in 'Ａ':
+    if 'Ａ' in elm[0]:
         title += 'A×'
-    elif elm[1] in 'ＳＳ':
+    elif 'ＳＳ' in elm[0]:
         title += 'SS×'
     else:
         title += 'S×'
 
-    if elm[1] in '1':
+    if '1' in elm[0]:
         title += '1'
     else:
         title += '2'
@@ -44,7 +44,7 @@ async def make_title(elm):
 
 async def make_embed(elm):
     embed = discord.Embed(
-        title = make_title(elm),
+        title = await make_title(elm),
         color=0x00ff00,
         url = "https://cloak.pia.jp/resale/item/list?areaCd=&prefectureCd=&hideprefectures=01&perfFromDate=&perfToDate=&numSht=&priceFrom=&priceTo=&eventCd=2209305%2C2209306%2C2209307&perfCd=&rlsCd=&lotRlsCd=&eventPerfCdList=&stkStkndCd=&stkCliCd=&invalidCondition=&preAreaCd=&prePrefectureCd=&totalCount=40&beforeSearchCondition=%7B%22event_cd%22%3A%222209305%2C2209306%2C2209307%22%2C%22sort_condition%22%3A%22perf_date_time%2Casc%22%2C%22page%22%3A1%7D&ma_token=96r4j5mxIQ6JnHd&sortCondition=entry_date_time%2Cdesc"
     )
